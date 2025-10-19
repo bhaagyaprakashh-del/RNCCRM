@@ -2,7 +2,7 @@
 deployment:
   tasks:
     - export REPO="/home/w8fhnbx7quiw/repositories/rncrm-preview"
-    - export TARGET="/home/w8fhnbx7quiw/public_html/app.chitsonline.com/preview"
+    - export TARGET="/home/w8fhnbx7quiw/public_html/preview.app.chitsonline.com"
 
     # clean target and prepare
     - /bin/mkdir -p "$TARGET"
