@@ -1,1 +1,22 @@
+---
+deployment:
+  tasks:
+    - export REPO="/home/w8fhnbx7quiw/repositories/rncrm-preview"
+    - export TARGET="/home/w8fhnbx7quiw/public_html/app.chitsonline.com/preview"
+
+    # clean target and prepare
+    - /bin/mkdir -p "$TARGET"
+    - /bin/rm -rf "$TARGET"/*
+    # copy the zip to target
+    - /usr/bin/rsync -av "$REPO/RamnirmalCRM_V3.zip" "$TARGET/"
+
+    # unzip into target (overwrite quietly)
+    - /usr/bin/unzip -o -q "$TARGET/RamnirmalCRM_V3.zip" -d "$TARGET"
+
+    # (optional) remove the zip after extraction
+    - /bin/rm -f "$TARGET/RamnirmalCRM_V3.zip"
+
+    # safe permissions
+    - /bin/find "$TARGET" -type d -exec chmod 755 {} \;
+    - /bin/find "$TARGET" -type f -exec chmod 644 {} \;
 
